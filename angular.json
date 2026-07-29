@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "personaFinancesTKat": {
+    "personal-finance-web": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "personaFinancesTKat:build:production"
+              "buildTarget": "personal-finance-web:build:production"
             },
             "development": {
-              "buildTarget": "personaFinancesTKat:build:development"
+              "buildTarget": "personal-finance-web:build:development"
             }
           },
           "defaultConfiguration": "development"
