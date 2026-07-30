@@ -16,7 +16,7 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ernestocardenas79/personal-finance-web
+  REGISTRY_IMAGE: ernestocardenas79/personal-finance-web
 
 jobs:
   build-and-publish:
@@ -59,7 +59,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.REGISTRY_IMAGE }}
           tags: |
             type=raw,value=dev
             type=sha
