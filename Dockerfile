@@ -1,13 +1,7 @@
 ARG NGINX_VERSION=1.29-alpine
+ARG NODE_VERSION=24
 
-LABEL org.opencontainers.image.title="Personal Finance Web"
-LABEL org.opencontainers.image.description="Personal Finance SPA"
-LABEL org.opencontainers.image.source="https://github.com/ernestocardenas79/PersonalFinanceWeb"
-LABEL org.opencontainers.image.vendor="Cats Lair"
-LABEL org.opencontainers.image.licenses="MIT"
-
-# ---------- Build Stage ----------
-FROM node:24-alpine AS build
+FROM node:${NODE_VERSION}-alpine AS build
 
 WORKDIR /app
 
