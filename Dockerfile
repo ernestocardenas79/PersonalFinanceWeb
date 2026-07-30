@@ -1,6 +1,8 @@
 ARG NGINX_VERSION=1.29-alpine
 ARG NODE_VERSION=25.2.1
 
+FROM node:${NODE_VERSION}-alpine AS build
+
 WORKDIR /app
 
 RUN corepack enable
