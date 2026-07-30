@@ -74,3 +74,28 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}         
           cache-from: type=gha
           cache-to: type=gha,mode=max
+  deploy:
+    needs: build-and-publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH Remote Commands
+        # You may pin to the exact commit or the version.
+        # uses: appleboy/ssh-action@029f5b4aeeeb58fdfe1410a5d17f967dacf36262
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          # SSH host address.
+          host: ${{secrets.SERVER_HOST}}
+          # SSH port number.
+          port: ${{secrets.SERVER_PORT}}
+          # SSH username.
+          username: ${{secrets.SERVER_USER}}
+          key: ${{secrets.SERVER_SSH_KEY}}
+          script_stop: true
+          script: |
+           cd ${{ secrets.APP_PATH }}
+           docker compose pull
+           docker compose up -d
+           docker image prune -f
+          
+              
