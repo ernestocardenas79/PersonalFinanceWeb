@@ -82,42 +82,6 @@ jobs:
       APP_PATH: ${{ secrets.APP_PATH }}
 
     steps:
-      - name: Verify runner environment
-        run: |
-          echo "Hostname: $(hostname)"
-          echo "User: $(whoami)"
-          echo
-          docker --version
-          docker compose version
-          echo
-          docker ps
-      - name: Show runner information
-        run: |
-          hostname
-          pwd
-          docker --version
-          docker compose version
-      - name: Debug deploy
-        env:
-          APP_PATH: ${{ secrets.APP_PATH }}
-        run: |
-          cd "$APP_PATH"
-      
-          pwd
-      
-          ls -la
-      
-          echo "----- compose -----"
-          cat compose.yml
-      
-          echo "----- env -----"
-          cat .env
-      
-          echo "----- resolved config -----"
-          docker compose config
-      
-          echo "----- docker pull -----"
-          docker pull ghcr.io/ernestocardenas79/personal-finance-web:dev
       - name: Deploy application
         run: |
            cd "$APP_PATH"
